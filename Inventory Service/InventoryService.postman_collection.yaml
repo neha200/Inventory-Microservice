@@ -1,0 +1,84 @@
+{
+  "info": {
+    "name": "Inventory Service (.NET)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Inventory",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/inventory",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "inventory"]
+        }
+      }
+    },
+    {
+      "name": "Get Inventory By ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/inventory/{{inventoryId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "inventory", "{{inventoryId}}"]
+        }
+      }
+    },
+    {
+      "name": "Create Inventory",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productName\": \"Sample Product\",\n  \"stockLevel\": 100,\n  \"productMovement\": [{\"type\": \"IN\", \"quantity\": 100, \"date\": \"2025-04-21\"}],\n  \"inventoryAlert\": {\"threshold\": 20, \"isAlert\": false}\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/inventory",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "inventory"]
+        }
+      }
+    },
+    {
+      "name": "Update Inventory",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"{{inventoryId}}\",\n  \"productName\": \"Updated Product\",\n  \"stockLevel\": 50,\n  \"productMovement\": [{\"type\": \"OUT\", \"quantity\": 50, \"date\": \"2025-04-22\"}],\n  \"inventoryAlert\": {\"threshold\": 20, \"isAlert\": true}\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/inventory/{{inventoryId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "inventory", "{{inventoryId}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Inventory",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/inventory/{{inventoryId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "inventory", "{{inventoryId}}"]
+        }
+      }
+    }
+  ]
+}

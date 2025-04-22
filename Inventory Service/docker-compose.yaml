@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # RabbitMQ server
+      - "15672:15672"   # Web UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+         test: ["CMD", "rabbitmq-diagnostics", "ping"]
+         interval: 10s
+         timeout: 5s
+         retries: 5
+
+  inventory-dotnet:
+    build:
+      context: .
+    container_name: inventoryservice
+    ports:
+      - "8080:8080"
+    depends_on:
+         rabbitmq:
+           condition: service_healthy
+         mongo:
+           condition: service_started
+    environment:
+      - ConnectionStrings__MongoDb=mongodb://mongo:27017
+      - RabbitMQ__Host=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__User=guest
+      - RabbitMQ__Password=guest
+    
+volumes:
+  mongo-data:

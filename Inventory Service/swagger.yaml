@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: Inventory Service API
+  description: API for managing inventory items
+  version: 1.0.0
+servers:
+  - url: http://localhost:8001
+paths:
+  /inventory:
+    get:
+      summary: Get All Inventory
+      responses:
+        '200':
+          description: A list of inventory items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    productId:
+                      type: string
+                    stockLevel:
+                      type: integer
+                    productMovement:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          quantity:
+                            type: integer
+                          date:
+                            type: string
+                            format: date
+                    inventoryAlert:
+                      type: object
+                      properties:
+                        threshold:
+                          type: integer
+                        isAlert:
+                          type: boolean
+    post:
+      summary: Create Inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                stockLevel:
+                  type: integer
+                productMovement:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      quantity:
+                        type: integer
+                      date:
+                        type: string
+                        format: date
+                inventoryAlert:
+                  type: object
+                  properties:
+                    threshold:
+                      type: integer
+                    isAlert:
+                      type: boolean
+      responses:
+        '201':
+          description: Inventory item created
+  /inventory/{inventoryId}:
+    get:
+      summary: Get Inventory By ID
+      parameters:
+        - name: inventoryId
+          in: path
+          required: true
+          description: The ID of the inventory item
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Inventory item details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  productId:
+                    type: string
+                  stockLevel:
+                    type: integer
+                  productMovement:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        quantity:
+                          type: integer
+                        date:
+                          type: string
+                          format: date
+                  inventoryAlert:
+                    type: object
+                    properties:
+                      threshold:
+                        type: integer
+                      isAlert:
+                        type: boolean
+        '404':
+          description: Inventory item not found
