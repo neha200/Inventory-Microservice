@@ -38,13 +38,13 @@ This microservice manages inventory data and integrates with MongoDB and RabbitM
    ```bash
    docker-compose down
    ```
-4. Delete all Docker Resources: To remove all unused data, including images, containers, volumes, and networks:
-   ```bash
-   docker system prune -a --volumes
-   ```
-5. To clear Docker cache
+4. To clear Docker cache
    ```bash
    docker builder prune -a
+   ```
+5. Delete all Docker Resources: To remove all unused data, including images, containers, volumes, and networks:
+   ```bash
+   docker system prune -a --volumes
    ```
 ## Note
 For C# Application using RabbitMq, the container might stop after it starts (inventory-service). Need to manually start it, once RabbitMQ is up.

@@ -120,3 +120,61 @@ paths:
                         type: boolean
         '404':
           description: Inventory item not found
+    put:
+      summary: Update Inventory
+      parameters:
+        - name: inventoryId
+          in: path
+          required: true
+          description: The ID of the inventory item
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: string
+                stockLevel:
+                  type: integer
+                productMovement:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      quantity:
+                        type: integer
+                      date:
+                        type: string
+                        format: date
+                inventoryAlert:
+                  type: object
+                  properties:
+                    threshold:
+                      type: integer
+                    isAlert:
+                      type: boolean
+      responses:
+        '200':
+          description: Inventory item updated
+        '404':
+          description: Inventory item not found
+    delete:
+      summary: Delete Inventory
+      parameters:
+        - name: inventoryId
+          in: path
+          required: true
+          description: The ID of the inventory item
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Inventory item deleted
+        '404':
+          description: Inventory item not found
