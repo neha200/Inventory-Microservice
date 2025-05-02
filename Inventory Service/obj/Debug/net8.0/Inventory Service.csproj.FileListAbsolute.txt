@@ -1,7 +1,0 @@
-D:\Code\Scalable Services\code using C#, .Net\Inventory-MicroService\Inventory Service\obj\Debug\net8.0\Inventory Service.csproj.AssemblyReference.cache
-D:\Code\Scalable Services\code using C#, .Net\Inventory-MicroService\Inventory Service\obj\Debug\net8.0\Inventory Service.GeneratedMSBuildEditorConfig.editorconfig
-D:\Code\Scalable Services\code using C#, .Net\Inventory-MicroService\Inventory Service\obj\Debug\net8.0\Inventory Service.AssemblyInfoInputs.cache
-D:\Code\Scalable Services\code using C#, .Net\Inventory-MicroService\Inventory Service\obj\Debug\net8.0\Inventory Service.AssemblyInfo.cs
-D:\Code\Scalable Services\code using C#, .Net\Inventory-MicroService\Inventory Service\obj\Debug\net8.0\Inventory Service.csproj.CoreCompileInputs.cache
-D:\Code\Scalable Services\code using C#, .Net\Inventory-MicroService\Inventory Service\obj\Debug\net8.0\Inventory Service.MvcApplicationPartsAssemblyInfo.cs
-D:\Code\Scalable Services\code using C#, .Net\Inventory-MicroService\Inventory Service\obj\Debug\net8.0\Inventory Service.MvcApplicationPartsAssemblyInfo.cache
